@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-14T01:11:56.841809+00:00",
+  "timestamp": "2021-12-16T01:08:26.633217+00:00",
   "repo": "ietf-wg-masque/draft-ietf-masque-connect-udp",
   "labels": [
     {
@@ -3239,6 +3239,72 @@
           "updatedAt": "2021-12-14T01:08:34Z"
         }
       ]
+    },
+    {
+      "number": 74,
+      "id": "I_kwDOETZKbc5AX8VR",
+      "title": "Supporting Don't Fragment (or not)",
+      "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/issues/74",
+      "state": "OPEN",
+      "author": "LPardue",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "An application that tunnels UDP may rely on certain properties or features of the socket that the proxy creates. The draft covers some of these but doesn't seem to mention the UDP fragmentation. TURN has a whole section on this https://www.rfc-editor.org/rfc/rfc8656.html#section-3.7\r\n\r\nQUIC, for example, requires that `UDP datagrams MUST NOT be fragmented at the IP layer` and recommends the Don't Fragment (DF) bit MUST be set if possible. \r\n\r\nSince a proxy is agnostic to the application protocol in use (I'm assuming that because we don't mention the [ALPN header](https://datatracker.ietf.org/doc/html/rfc7639) anywhere) perhaps CONNECT-UDP would benefit from a signal the client can send to the proxy to state it's DF preferences.  ",
+      "createdAt": "2021-12-14T17:16:23Z",
+      "updatedAt": "2021-12-15T00:43:59Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This sounds like a worthwhile extension draft? I don't think it's required to have a functional CONNECT-UDP protocol",
+          "createdAt": "2021-12-14T23:36:05Z",
+          "updatedAt": "2021-12-14T23:36:05Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "NONE",
+          "body": "One argument for doing it here is that one of the common uses of CONNECT-UDP will be to tunnel QUIC, and this is an obvious footgun in consideration of RFC 9000 requirements. \r\n\r\nThe opposite way to solve the problem could be to add MUST/SHOULD language about proxies setting DF by default. And then require an extension to signal to disable it. But this is solutionizing a bit.\r\n\r\nReally, I want to be able to write a client that can have consistent expectations about the way datagram payload gets sent on UDP. Otherwise when things go wrong I'm left guessing and I might not have the information that the proxy did. I could even live with text in this document that raises this as a consideration but punts on the problem.",
+          "createdAt": "2021-12-14T23:51:18Z",
+          "updatedAt": "2021-12-14T23:51:41Z"
+        },
+        {
+          "author": "bemasc",
+          "authorAssociation": "NONE",
+          "body": "Note that this isn't just about setting `DF` in IPv4.  It's also about whether to apply sender fragmentation, in IPv6.\r\n\r\nI would be OK with declaring that all fragmentation is off by default, and leave it to extensions to turn it on.",
+          "createdAt": "2021-12-14T23:57:31Z",
+          "updatedAt": "2021-12-14T23:57:31Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "NONE",
+          "body": "Good point Ben!",
+          "createdAt": "2021-12-15T00:08:55Z",
+          "updatedAt": "2021-12-15T00:08:55Z"
+        },
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'd be OK with saying proxies MUST NOT explicitly add fragmentation and SHOULD set the DF bit. We can't say MUST set DF because not all operating systems allow setting the DF bit on UDP sockets.",
+          "createdAt": "2021-12-15T00:30:09Z",
+          "updatedAt": "2021-12-15T00:30:09Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "NONE",
+          "body": "RFC 9000 says `In IPv4 [IPv4], the Don't Fragment (DF) bit MUST be set if possible, to prevent fragmentation on the path.`, not a fan?",
+          "createdAt": "2021-12-15T00:34:28Z",
+          "updatedAt": "2021-12-15T00:34:28Z"
+        },
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "\"MUST ... if possible\" is the same as \"SHOULD\" for me, I don't much care between them.",
+          "createdAt": "2021-12-15T00:43:59Z",
+          "updatedAt": "2021-12-15T00:43:59Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -3940,13 +4006,13 @@
       "labels": [],
       "body": "This PR mainly tracks the changes in the [corresponding HTTP Datagrams PR](https://github.com/ietf-wg-masque/draft-ietf-masque-h3-datagram/pull/124) and moves Context IDs to CONNECT-UDP.\r\n\r\nNote that this PR is against the design team consensus branch, not main.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/payload_varint/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/payload_varint/draft-ietf-masque-connect-udp.txt).",
       "createdAt": "2021-11-30T02:26:03Z",
-      "updatedAt": "2021-12-14T01:05:22Z",
+      "updatedAt": "2021-12-15T00:30:53Z",
       "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "baseRefName": "2021_design_team_consensus",
       "baseRefOid": "3694ca21e323dd84c0c721e18b9972ca7bd90e28",
       "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "headRefName": "payload_varint",
-      "headRefOid": "3d50451b12ccd37402835f35b4dc96934609dff7",
+      "headRefOid": "1163e2c330bd85e3e43a84ab24ae4b265b1c580b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4128,6 +4194,26 @@
           "createdAt": "2021-11-30T23:20:04Z",
           "updatedAt": "2021-11-30T23:20:04Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOETZKbc4xh6of",
+          "commit": {
+            "abbreviatedOid": "3d50451"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-14T03:16:04Z",
+          "updatedAt": "2021-12-14T03:16:05Z",
+          "comments": [
+            {
+              "originalPosition": 54,
+              "body": "```suggestion\r\n{: #dgram-format title=\"UDP Proxying HTTP Datagram Format\"}\r\n```",
+              "createdAt": "2021-12-14T03:16:04Z",
+              "updatedAt": "2021-12-14T03:16:05Z"
+            }
+          ]
         }
       ]
     },
@@ -4143,7 +4229,7 @@
       "labels": [],
       "body": "No dynamic fields/flags in the base CONNECT-UDP spec, let extensions define headers / flags / dynamic contexts.",
       "createdAt": "2021-12-13T23:19:58Z",
-      "updatedAt": "2021-12-13T23:21:40Z",
+      "updatedAt": "2021-12-15T01:06:12Z",
       "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "baseRefName": "main",
       "baseRefOid": "3694ca21e323dd84c0c721e18b9972ca7bd90e28",
@@ -4154,7 +4240,36 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "bemasc",
+          "authorAssociation": "NONE",
+          "body": "My question is: if we agree on this, is this sufficient for us to close the design team?  Or do we also need to establish how we intend to enable metadata, extensions, and alternative formats?",
+          "createdAt": "2021-12-14T17:46:58Z",
+          "updatedAt": "2021-12-14T17:46:58Z"
+        },
+        {
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I believe this is sufficient to close the team, if we agree. We don't need to design all future extensions. Remember, the design team was about H3 datagrams, not CONNECT-UDP and CONNECT-IP. I think we only need to provide a foundation that allows for extensibility.",
+          "createdAt": "2021-12-14T19:04:15Z",
+          "updatedAt": "2021-12-14T19:04:15Z"
+        },
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "In terms of process, the design team doesn't need to solve all the open questions about extensibility. The design team will be done when we have a solution that we believe allows enough future extensibility.\r\n\r\nMy personal read is that either #70 or #73 (or other potential options) fit the bill here.",
+          "createdAt": "2021-12-15T00:37:21Z",
+          "updatedAt": "2021-12-15T00:37:21Z"
+        },
+        {
+          "author": "afrind",
+          "authorAssociation": "NONE",
+          "body": "This design is good for simple extensions and provides an unobtrusive mechanism to use a dynamic context extension at a cost of one byte.  It's weak in providing a general mechanism to handle extension composability, and kicks that down the road.  Maybe that's fine?  We have several workable schemes for composability (flags, next-type, contexts), so we could defer to extension authors to pick.",
+          "createdAt": "2021-12-15T01:06:11Z",
+          "updatedAt": "2021-12-15T01:06:11Z"
+        }
+      ],
       "reviews": []
     }
   ]

@@ -357,8 +357,8 @@ Table of Contents
 5.  HTTP Datagram Payload Format
 
    When associated with UDP proxying request streams, the HTTP Datagram
-   Payload field of HTTP Datagrams (see [HTTP-DGRAM]) carries the
-   following semantics:
+   Payload field of HTTP Datagrams (see [HTTP-DGRAM]) has the following
+   format:
 
    UDP Proxying HTTP Datagram Payload {
      Context ID (i),

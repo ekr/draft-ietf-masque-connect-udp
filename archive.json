@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-16T01:08:26.633217+00:00",
+  "timestamp": "2022-01-16T01:16:53.228963+00:00",
   "repo": "ietf-wg-masque/draft-ietf-masque-connect-udp",
   "labels": [
     {
@@ -3999,21 +3999,21 @@
       "id": "PR_kwDOETZKbc4vKXM-",
       "title": "First PR for 2021 Design Team",
       "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/pull/70",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "DavidSchinazi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR mainly tracks the changes in the [corresponding HTTP Datagrams PR](https://github.com/ietf-wg-masque/draft-ietf-masque-h3-datagram/pull/124) and moves Context IDs to CONNECT-UDP.\r\n\r\nNote that this PR is against the design team consensus branch, not main.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/payload_varint/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/payload_varint/draft-ietf-masque-connect-udp.txt).",
       "createdAt": "2021-11-30T02:26:03Z",
-      "updatedAt": "2021-12-15T00:30:53Z",
+      "updatedAt": "2022-01-13T23:00:11Z",
       "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "baseRefName": "2021_design_team_consensus",
       "baseRefOid": "3694ca21e323dd84c0c721e18b9972ca7bd90e28",
       "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "headRefName": "payload_varint",
       "headRefOid": "1163e2c330bd85e3e43a84ab24ae4b265b1c580b",
-      "closedAt": null,
+      "closedAt": "2022-01-13T23:00:11Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -4059,6 +4059,13 @@
           "body": "Opened https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/issues/71",
           "createdAt": "2021-11-30T19:30:34Z",
           "updatedAt": "2021-11-30T19:30:34Z"
+        },
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing this PR in favor of #75 ",
+          "createdAt": "2022-01-13T23:00:11Z",
+          "updatedAt": "2022-01-13T23:00:11Z"
         }
       ],
       "reviews": [
@@ -4222,21 +4229,21 @@
       "id": "PR_kwDOETZKbc4vyoOn",
       "title": "Static datagram format registry proposal",
       "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/pull/73",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tfpauly",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "No dynamic fields/flags in the base CONNECT-UDP spec, let extensions define headers / flags / dynamic contexts.",
       "createdAt": "2021-12-13T23:19:58Z",
-      "updatedAt": "2021-12-15T01:06:12Z",
+      "updatedAt": "2022-01-13T23:00:24Z",
       "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "baseRefName": "main",
       "baseRefOid": "3694ca21e323dd84c0c721e18b9972ca7bd90e28",
       "headRepository": "tfpauly/draft-ietf-masque-connect-udp",
       "headRefName": "patch-1",
       "headRefOid": "8a59315050680f1ec890002bd029c6675214a9a9",
-      "closedAt": null,
+      "closedAt": "2022-01-13T23:00:24Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -4268,8 +4275,108 @@
           "body": "This design is good for simple extensions and provides an unobtrusive mechanism to use a dynamic context extension at a cost of one byte.  It's weak in providing a general mechanism to handle extension composability, and kicks that down the road.  Maybe that's fine?  We have several workable schemes for composability (flags, next-type, contexts), so we could defer to extension authors to pick.",
           "createdAt": "2021-12-15T01:06:11Z",
           "updatedAt": "2021-12-15T01:06:11Z"
+        },
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing this PR in favor of #76",
+          "createdAt": "2022-01-13T23:00:24Z",
+          "updatedAt": "2022-01-13T23:00:24Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 75,
+      "id": "PR_kwDOETZKbc4w-WU7",
+      "title": "Dynamic allocation of contexts",
+      "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/pull/75",
+      "state": "OPEN",
+      "author": "DavidSchinazi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is one potential design for the identifier at the start of the CONNECT-UDP datagram payload.\r\n\r\nNote that this PR is against the design team consensus branch, not main.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/context_id/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/context_id/draft-ietf-masque-connect-udp.txt).",
+      "createdAt": "2022-01-13T22:59:21Z",
+      "updatedAt": "2022-01-13T23:27:44Z",
+      "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
+      "baseRefName": "2021_design_team_consensus",
+      "baseRefOid": "626b55dfaa6e31052006c1ff6ebce9a1f3d4e2b7",
+      "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
+      "headRefName": "context_id",
+      "headRefOid": "2875f1ae190d3c541a1518e2dcb004b1e241abb1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOETZKbc4yzb46",
+          "commit": {
+            "abbreviatedOid": "3c42f04"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-13T23:21:16Z",
+          "updatedAt": "2022-01-13T23:21:16Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "Pre-existing text, but this is *format*, not semantics.  The semantics follow (i.e., meetings will continue until morale improves).",
+              "createdAt": "2022-01-13T23:21:16Z",
+              "updatedAt": "2022-01-13T23:21:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4yzcu_",
+          "commit": {
+            "abbreviatedOid": "2875f1a"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-13T23:27:44Z",
+          "updatedAt": "2022-01-13T23:27:44Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "Agreed. Fixed in the 2021_design_team_consensus branch",
+              "createdAt": "2022-01-13T23:27:44Z",
+              "updatedAt": "2022-01-13T23:27:44Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 76,
+      "id": "PR_kwDOETZKbc4w-WbA",
+      "title": "Static allocation of contexts",
+      "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/pull/76",
+      "state": "OPEN",
+      "author": "DavidSchinazi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is one potential design for the identifier at the start of the CONNECT-UDP datagram payload.\r\n\r\n(for the record, I personally strongly prefer the dynamic approach from #75)\r\n\r\nNote that this PR is against the design team consensus branch, not main.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/static/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/static/draft-ietf-masque-connect-udp.txt).",
+      "createdAt": "2022-01-13T22:59:42Z",
+      "updatedAt": "2022-01-13T23:28:09Z",
+      "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
+      "baseRefName": "2021_design_team_consensus",
+      "baseRefOid": "626b55dfaa6e31052006c1ff6ebce9a1f3d4e2b7",
+      "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
+      "headRefName": "static",
+      "headRefOid": "09647d7ed4c44484033be14b12986a5b5a4c79a8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]

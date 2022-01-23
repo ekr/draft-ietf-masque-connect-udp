@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-16T01:16:53.228963+00:00",
+  "timestamp": "2022-01-23T01:08:18.902669+00:00",
   "repo": "ietf-wg-masque/draft-ietf-masque-connect-udp",
   "labels": [
     {
@@ -3305,6 +3305,22 @@
           "updatedAt": "2021-12-15T00:43:59Z"
         }
       ]
+    },
+    {
+      "number": 78,
+      "id": "I_kwDOETZKbc5CJ80Z",
+      "title": "Define the syntax of connect-udp-version HTTP header field",
+      "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/issues/78",
+      "state": "OPEN",
+      "author": "LPardue",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The doc has a development versioning header `connect-udp-version` but it omits the ABNF. The format is described as a list of values on request headers and a single item on response headers. I'm going to assume this is an sf-list, can we state that to avoid uncertainty?",
+      "createdAt": "2022-01-21T00:23:20Z",
+      "updatedAt": "2022-01-21T00:43:46Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -4291,25 +4307,35 @@
       "id": "PR_kwDOETZKbc4w-WU7",
       "title": "Dynamic allocation of contexts",
       "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/pull/75",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "DavidSchinazi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This is one potential design for the identifier at the start of the CONNECT-UDP datagram payload.\r\n\r\nNote that this PR is against the design team consensus branch, not main.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/context_id/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/context_id/draft-ietf-masque-connect-udp.txt).",
       "createdAt": "2022-01-13T22:59:21Z",
-      "updatedAt": "2022-01-13T23:27:44Z",
+      "updatedAt": "2022-01-20T23:28:50Z",
       "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "baseRefName": "2021_design_team_consensus",
       "baseRefOid": "626b55dfaa6e31052006c1ff6ebce9a1f3d4e2b7",
       "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "headRefName": "context_id",
       "headRefOid": "2875f1ae190d3c541a1518e2dcb004b1e241abb1",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2022-01-20T23:28:50Z",
+      "mergedAt": "2022-01-20T23:28:49Z",
+      "mergedBy": "DavidSchinazi",
+      "mergeCommit": {
+        "oid": "f34fb0fe661b6929f0e23a992d0dcb57a33c4de3"
+      },
+      "comments": [
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "During the HTTP Datagrams Design Team meeting on 2022-01-20, we reached consensus to move forward with the dynamic approach, so I'm merging this PR.",
+          "createdAt": "2022-01-20T23:28:45Z",
+          "updatedAt": "2022-01-20T23:28:45Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOETZKbc4yzb46",
@@ -4358,26 +4384,87 @@
       "id": "PR_kwDOETZKbc4w-WbA",
       "title": "Static allocation of contexts",
       "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/pull/76",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "DavidSchinazi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This is one potential design for the identifier at the start of the CONNECT-UDP datagram payload.\r\n\r\n(for the record, I personally strongly prefer the dynamic approach from #75)\r\n\r\nNote that this PR is against the design team consensus branch, not main.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/static/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/static/draft-ietf-masque-connect-udp.txt).",
       "createdAt": "2022-01-13T22:59:42Z",
-      "updatedAt": "2022-01-13T23:28:09Z",
+      "updatedAt": "2022-01-20T23:28:40Z",
       "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "baseRefName": "2021_design_team_consensus",
       "baseRefOid": "626b55dfaa6e31052006c1ff6ebce9a1f3d4e2b7",
       "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "headRefName": "static",
       "headRefOid": "09647d7ed4c44484033be14b12986a5b5a4c79a8",
+      "closedAt": "2022-01-20T23:28:40Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "During the HTTP Datagrams Design Team meeting on 2022-01-20, we reached consensus to move forward with the dynamic approach, so I'm closing this PR in favor of #75.",
+          "createdAt": "2022-01-20T23:28:40Z",
+          "updatedAt": "2022-01-20T23:28:40Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 77,
+      "id": "PR_kwDOETZKbc4xWs8x",
+      "title": "CONNECT-UDP: 2021 Design Team Consensus",
+      "url": "https://github.com/ietf-wg-masque/draft-ietf-masque-connect-udp/pull/77",
+      "state": "OPEN",
+      "author": "DavidSchinazi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Once approved, this PR will represent the consensus of the 2021 Design Team.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.txt).\r\n\r\ncc @afrind @LPardue @MikeBishop @martinthomson @vasilvv @ekr @achernya @bemasc @tfpauly @ihlar\r\n\r\nFixes #71 \r\nFixes #72 ",
+      "createdAt": "2022-01-21T00:21:59Z",
+      "updatedAt": "2022-01-21T23:28:46Z",
+      "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
+      "baseRefName": "main",
+      "baseRefOid": "3694ca21e323dd84c0c721e18b9972ca7bd90e28",
+      "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
+      "headRefName": "2021_design_team_consensus",
+      "headRefOid": "f34fb0fe661b6929f0e23a992d0dcb57a33c4de3",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOETZKbc4zMn8H",
+          "commit": {
+            "abbreviatedOid": "f34fb0f"
+          },
+          "author": "LPardue",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "LGTM, thank you!",
+          "createdAt": "2022-01-21T00:44:49Z",
+          "updatedAt": "2022-01-21T00:44:49Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zRFBK",
+          "commit": {
+            "abbreviatedOid": "f34fb0f"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-01-21T23:28:46Z",
+          "updatedAt": "2022-01-21T23:28:46Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }

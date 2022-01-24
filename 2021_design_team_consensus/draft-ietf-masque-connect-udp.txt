@@ -4,8 +4,8 @@
 
 MASQUE                                                       D. Schinazi
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                         20 January 2022
-Expires: 24 July 2022
+Intended status: Standards Track                         24 January 2022
+Expires: 28 July 2022
 
 
                      UDP Proxying Support for HTTP
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 July 2022.
+   This Internet-Draft will expire on 28 July 2022.
 
 Copyright Notice
 
@@ -346,12 +346,12 @@ Table of Contents
    of zero is reserved for UDP payloads, while non-zero values are
    dynamically allocated: non-zero even-numbered context IDs are client-
    initiated, and odd-numbered context IDs are server-initiated.
-   Extensions can use the next available context ID for their own
-   purposes.  Note that, once allocated, any context ID can be used by
-   both client and server - only allocation carries separate namespaces
-   to avoid requiring synchronization.  Additionally, note that the
-   context ID namespace is tied to a given HTTP request: it is possible
-   for the same numeral context ID to be used simultaneously in distinct
+   Extensions can use any available context ID for their own purposes.
+   Note that, once allocated, any context ID can be used by both client
+   and server - only allocation carries separate namespaces to avoid
+   requiring synchronization.  Additionally, note that the context ID
+   namespace is tied to a given HTTP request: it is possible for the
+   same numeral context ID to be used simultaneously in distinct
    requests.
 
 5.  HTTP Datagram Payload Format

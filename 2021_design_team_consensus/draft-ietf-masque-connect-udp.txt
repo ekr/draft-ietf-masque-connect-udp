@@ -4,8 +4,8 @@
 
 MASQUE                                                       D. Schinazi
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                         24 January 2022
-Expires: 28 July 2022
+Intended status: Standards Track                         25 January 2022
+Expires: 29 July 2022
 
 
                      UDP Proxying Support for HTTP
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 July 2022.
+   This Internet-Draft will expire on 29 July 2022.
 
 Copyright Notice
 
@@ -346,13 +346,22 @@ Table of Contents
    of zero is reserved for UDP payloads, while non-zero values are
    dynamically allocated: non-zero even-numbered context IDs are client-
    initiated, and odd-numbered context IDs are server-initiated.
-   Extensions can use any available context ID for their own purposes.
-   Note that, once allocated, any context ID can be used by both client
-   and server - only allocation carries separate namespaces to avoid
-   requiring synchronization.  Additionally, note that the context ID
-   namespace is tied to a given HTTP request: it is possible for the
-   same numeral context ID to be used simultaneously in distinct
-   requests.
+   Implementations will provide a context ID allocation service.  That
+   service will allow extensions to request a unique context ID that
+   they can subsequently use for their own purposes.  This means that an
+   HTTP client implementation of the context ID allocation service MUST
+   only provide even-numbered IDs, while a server implementation MUST
+   only provide odd-numbered IDs.  The context allocation service MUST
+   NOT return the same context ID twice.  Note that, once allocated, any
+   context ID can be used by both client and server - only allocation
+   carries separate namespaces to avoid requiring synchronization.
+   Additionally, note that the context ID namespace is tied to a given
+   HTTP request: it is possible for the same numeral context ID to be
+   used simultaneously in distinct requests, potentially with different
+   semantics.
+
+   Registration is the action by which an endpoint informs its peer of
+   the semantics and format of a given context ID.
 
 5.  HTTP Datagram Payload Format
 
@@ -368,8 +377,10 @@ Table of Contents
                 Figure 6: UDP Proxying HTTP Datagram Format
 
    Context ID:  A variable-length integer that contains the value of the
-      Context ID.  Endpoints MUST silently drop any received HTTP
-      Datagram which carries an unknown Context ID.
+      Context ID.  If an HTTP/3 datagram which carries an unknown
+      Context ID is received, the receiver SHALL either drop that
+      datagram silently or buffer it temporarily while awaiting the
+      registration of the corresponding Context ID.
 
    Payload:  The payload of the datagram, whose semantics depend on
       value of the previous field.  Note that this field can be empty.
@@ -592,9 +603,7 @@ Appendix A.  Example Extensions
    Extensions can define new semantics for the payload of HTTP
    Datagrams.  The extension can then have an endpoint pick an available
    context ID using the allocation service (Section 4) and register that
-   context ID with their peer.  Registration is the action by which an
-   endpoint informs its peer of the semantics and format of a given
-   context ID.
+   context ID with their peer.
 
 A.1.  Registering Contexts with Headers
 
@@ -613,10 +622,11 @@ A.1.  Registering Contexts with Headers
           Figure 7: Example: Format of UDP Payload with Timestamp
 
    The extension would also define a new HTTP header (UDP-Timestamps)
-   that includes a context ID value.  Endpoints that understand this new
+   that includes a context ID value.  Servers that understand this new
    HTTP header would be able to consequently handle and parse datagrams
-   on the context ID, while all other endpoints would ignore the
-   datagrams.
+   on the context ID, while all other servers would silently drop the
+   datagrams.  Clients also indicate their support for receiving on this
+   Context ID by registering it.
 
    HEADERS
    :method = CONNECT

@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-23T01:08:18.902669+00:00",
+  "timestamp": "2022-01-25T01:14:38.124618+00:00",
   "repo": "ietf-wg-masque/draft-ietf-masque-connect-udp",
   "labels": [
     {
@@ -4425,13 +4425,13 @@
       "labels": [],
       "body": "Once approved, this PR will represent the consensus of the 2021 Design Team.\r\n\r\n[Rendered view of this PR](https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.html).\r\n[Rendered diff with the design team consensus branch](https://www.ietf.org/rfcdiff?url1=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/draft-ietf-masque-connect-udp.txt&url2=https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.txt).\r\n\r\ncc @afrind @LPardue @MikeBishop @martinthomson @vasilvv @ekr @achernya @bemasc @tfpauly @ihlar\r\n\r\nFixes #71 \r\nFixes #72 ",
       "createdAt": "2022-01-21T00:21:59Z",
-      "updatedAt": "2022-01-21T23:28:46Z",
+      "updatedAt": "2022-01-25T01:05:08Z",
       "baseRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "baseRefName": "main",
       "baseRefOid": "3694ca21e323dd84c0c721e18b9972ca7bd90e28",
       "headRepository": "ietf-wg-masque/draft-ietf-masque-connect-udp",
       "headRefName": "2021_design_team_consensus",
-      "headRefOid": "f34fb0fe661b6929f0e23a992d0dcb57a33c4de3",
+      "headRefOid": "dff420c95ac9093c300eaa74ec12f31066ffe5ac",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -4463,6 +4463,372 @@
           "createdAt": "2022-01-21T23:28:46Z",
           "updatedAt": "2022-01-21T23:28:46Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zU8-o",
+          "commit": {
+            "abbreviatedOid": "f34fb0f"
+          },
+          "author": "bemasc",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-01-24T15:34:55Z",
+          "updatedAt": "2022-01-24T15:43:17Z",
+          "comments": [
+            {
+              "originalPosition": 35,
+              "body": "```suggestion\r\nodd-numbered context IDs are server-initiated. Extensions can use any\r\n```\r\n\r\nI think it could be valuable to register IDs out of order.  Unless we have some compelling reason to require registration in-order, I would prefer to make it clearer that this is allowed.\r\n\r\n(I think composition is likely to work by first registering the components, and then constructing the composition using the components by ID.  Since the composition is the one we care about, we don't want to waste short IDs on the components that will not actually be used independently.)",
+              "createdAt": "2022-01-24T15:34:55Z",
+              "updatedAt": "2022-01-24T15:43:17Z"
+            },
+            {
+              "originalPosition": 105,
+              "body": "I would appreciate some clarification on whether a single extension is expected to offer _both_ registration mechanisms.\r\n\r\nIf most extensions are expected to support both, I think we should consider adding some standards development guidance to minimize duplicated effort (e.g. registration capsule contents should be exactly the header value).",
+              "createdAt": "2022-01-24T15:41:23Z",
+              "updatedAt": "2022-01-24T15:43:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zVFys",
+          "commit": {
+            "abbreviatedOid": "f34fb0f"
+          },
+          "author": "LPardue",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-24T15:59:55Z",
+          "updatedAt": "2022-01-24T15:59:56Z",
+          "comments": [
+            {
+              "originalPosition": 105,
+              "body": "I think some guidance would be useful but it would make most sense to put it alongside the Context ID definition in https://ietf-wg-masque.github.io/draft-ietf-masque-connect-udp/2021_design_team_consensus/draft-ietf-masque-connect-udp.html#section-4\r\n\r\nI don't think that needs to block this PR but can instead be done as a follow up WG item.",
+              "createdAt": "2022-01-24T15:59:56Z",
+              "updatedAt": "2022-01-24T15:59:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zVWe7",
+          "commit": {
+            "abbreviatedOid": "909e718"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-24T16:40:50Z",
+          "updatedAt": "2022-01-24T16:40:50Z",
+          "comments": [
+            {
+              "originalPosition": 105,
+              "body": "During the last design team meeting, we reached consensus that extension composability should be addressed by the working group as a whole, instead of as part of the design team efforts. When we do look into this as a working group, I'm fairly confident that the appendix about extensions will get rewritten. That'll be the best time to discuss what guidance we want to provide in terms of whether a given extension should offer both registration mechanisms. All this to say I agree with Lucas, let's handle this as a follow up WG item - @bemasc feel free to file an issue to make sure this is tracked.",
+              "createdAt": "2022-01-24T16:40:50Z",
+              "updatedAt": "2022-01-24T16:40:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zVt0X",
+          "commit": {
+            "abbreviatedOid": "909e718"
+          },
+          "author": "afrind",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-24T17:58:16Z",
+          "updatedAt": "2022-01-24T22:01:11Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "possibly with different semantics as well.",
+              "createdAt": "2022-01-24T17:58:16Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            },
+            {
+              "originalPosition": 59,
+              "body": "Don't we want to allow buffering Datagrams with an unknown context ID for a period of time as well?",
+              "createdAt": "2022-01-24T17:59:23Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            },
+            {
+              "originalPosition": 99,
+              "body": "Is this the only instance of the phrase `allocation service` now?  I don't see a reference in the context-id section.",
+              "createdAt": "2022-01-24T21:33:40Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            },
+            {
+              "originalPosition": 101,
+              "body": "This sentence seems like it belongs in the more normative section rather than examples.",
+              "createdAt": "2022-01-24T21:34:31Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            },
+            {
+              "originalPosition": 125,
+              "body": "Would it be more clear to say \"server endpoints that understand\", and the also mention that the client also declares it's ability to handle and parse those datagrams by sending the header?\r\n\r\nAnd perhaps s/ignore/drop/ ?",
+              "createdAt": "2022-01-24T21:37:03Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            },
+            {
+              "originalPosition": 134,
+              "body": "We were starting to bikeshed on the format of these headers in the last design team meeting.  Did we resolve that this is the preferred format, or are we punting back to the WG?",
+              "createdAt": "2022-01-24T21:38:27Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            },
+            {
+              "originalPosition": 34,
+              "body": "Do we want to include in the draft any of our rationale behind this design choice (more compact encodings for extensions with per-request state and extension composition)?",
+              "createdAt": "2022-01-24T21:43:51Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            },
+            {
+              "originalPosition": 125,
+              "body": "Have we considered the possibility of an extension with unidirectional semantics -- eg: one that an endpoint wishes to send but does not want to or cannot receive, or vice versa?  This design requires anyone wishing to send an extension be willing to accept it as well.  I don't really love splitting the context-ID space 4 ways, but we could.",
+              "createdAt": "2022-01-24T21:59:08Z",
+              "updatedAt": "2022-01-24T22:01:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zW55N",
+          "commit": {
+            "abbreviatedOid": "909e718"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Needs refinement, but I don't see any problems with the approach that are strong or fundamental enough to object to the general direction.\r\n\r\nTook a lot of work to arrive at \"stick a varint at the front\", but I can't say that the process had no value.",
+          "createdAt": "2022-01-24T23:53:27Z",
+          "updatedAt": "2022-01-25T00:27:41Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "You need to mention varint encoding here or people will complain about this not being byte-aligned.\r\n\r\n```suggestion\r\nContext IDs are 62-bit integers (0 to 2<sup>62</sup>-1) using the variable-length defined in {{Section ?? of QUIC}}. The context ID value of\r\n```",
+              "createdAt": "2022-01-24T23:53:27Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 33,
+              "body": "```suggestion\r\n0 is reserved for UDP payloads, while non-zero values are dynamically\r\n```",
+              "createdAt": "2022-01-24T23:53:38Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 34,
+              "body": "I think that \"client-initiated\" is subtly wrong.  Even-numbered context IDs are reserved for allocation by clients and odd-numbered context IDs are reserved for servers.",
+              "createdAt": "2022-01-24T23:54:39Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 36,
+              "body": "```suggestion\r\navailable context ID for their own purposes. Once allocated, any\r\n```",
+              "createdAt": "2022-01-24T23:55:06Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 40,
+              "body": "```suggestion\r\nthe context ID namespace is tied to a given HTTP request: it is possible for a\r\ncontext ID with the same numeric value to be simultaneously assigned\r\ndifferent semantics in distinct requests.\r\n```",
+              "createdAt": "2022-01-24T23:57:05Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 52,
+              "body": "It might be worth including the Quarter Stream ID here for completeness, or at least mentioning it in context.  I know that you are only defining the payload here, but a common failing in making specifications comprehensible is a lack of that sort of explanatory context.",
+              "createdAt": "2022-01-24T23:58:33Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 99,
+              "body": "Yeah, I think that you can drop the concept and simply talk about the endpoint just picking a context ID to assign.",
+              "createdAt": "2022-01-24T23:59:49Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 38,
+              "body": "Is there any constraints on allocation?  As a client, can I perform random allocations from the space?  (yes?) If I allocate 2^62-1 as a server, does that mean that all previous values are taken? (no?) What if a peer attempts to overload my allocation table? (suck it? we'll not be making it easy to consume multiple allocations anyway ...?)",
+              "createdAt": "2022-01-25T00:03:23Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 119,
+              "body": "This definitely needs to include the context ID.  As an example, the more context (no pun intended) the better.",
+              "createdAt": "2022-01-25T00:04:08Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 110,
+              "body": "House style doesn't use \"us\" or \"we\".\r\n\r\n```suggestion\r\nAs an example, take an extension that conveys the time at which a UDP\r\n```",
+              "createdAt": "2022-01-25T00:04:54Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 122,
+              "body": "It might pay to prefix this with \"Example-\" in order to (maybe) avoid a potential misunderstanding about whether this is a real thing.",
+              "createdAt": "2022-01-25T00:05:40Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 174,
+              "body": "I find this \"low context IDs\" thing to be a little bit of a non-sequitur.  You haven't established why composition might be useful or important, but now you are jumping straight to optimizing for size.  This section probably needs a bit more context.",
+              "createdAt": "2022-01-25T00:08:10Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            },
+            {
+              "originalPosition": 91,
+              "body": "I feel that these extensions are a little too well formed to serve well as extensions.  They read far too much like specifications, which might be misleading or confusing.\r\n\r\nIf the goal is to guide future protocol designers, that guidance can be provided as pure text.  Including \"grammar\" (illustrations really, if I stick to my position there) isn't necessary to convey the necessary meaning.",
+              "createdAt": "2022-01-25T00:25:40Z",
+              "updatedAt": "2022-01-25T00:27:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zW6EY",
+          "commit": {
+            "abbreviatedOid": "909e718"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-24T23:54:43Z",
+          "updatedAt": "2022-01-25T00:28:21Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "Agreed, added a clause.",
+              "createdAt": "2022-01-24T23:54:43Z",
+              "updatedAt": "2022-01-25T00:28:21Z"
+            },
+            {
+              "originalPosition": 34,
+              "body": "I don't think we need rationale for every single design decision, it'll make the document harder to read. RFC 9000 doesn't explain the rationale for client vs server-initiated streams",
+              "createdAt": "2022-01-24T23:56:59Z",
+              "updatedAt": "2022-01-25T00:28:21Z"
+            },
+            {
+              "originalPosition": 101,
+              "body": "Agreed, moved.",
+              "createdAt": "2022-01-25T00:01:26Z",
+              "updatedAt": "2022-01-25T00:28:21Z"
+            },
+            {
+              "originalPosition": 59,
+              "body": "That was an oversight, fixed.",
+              "createdAt": "2022-01-25T00:01:41Z",
+              "updatedAt": "2022-01-25T00:28:21Z"
+            },
+            {
+              "originalPosition": 99,
+              "body": "That was also an oversight, fixed.",
+              "createdAt": "2022-01-25T00:08:56Z",
+              "updatedAt": "2022-01-25T00:28:21Z"
+            },
+            {
+              "originalPosition": 134,
+              "body": "We decided to punt registration and extension composability back to the WG",
+              "createdAt": "2022-01-25T00:09:54Z",
+              "updatedAt": "2022-01-25T00:28:21Z"
+            },
+            {
+              "originalPosition": 125,
+              "body": "I've clarified the text about this specific client-initiated extension example.\r\n\r\nHowever, we don't need to do anything else for unidirectional extensions. Such an extension could easily say that its registration is unidirectional, and that sending in the other direction is not allowed. There's no reason to split the namespace - QUIC did that because a bidirectional stream has a more complex state machine, and bidirectional flow control - neither of which apply to datagrams.",
+              "createdAt": "2022-01-25T00:26:25Z",
+              "updatedAt": "2022-01-25T00:28:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zXA6m",
+          "commit": {
+            "abbreviatedOid": "5a21b43"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-25T00:48:06Z",
+          "updatedAt": "2022-01-25T00:57:14Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "I prefer the term initiated since that maps to what QUIC uses to refer to streams. If that's OK with you I'm going to declare this editorial and that we can discuss it with the WG instead of in the design team.",
+              "createdAt": "2022-01-25T00:48:06Z",
+              "updatedAt": "2022-01-25T00:57:14Z"
+            },
+            {
+              "originalPosition": 52,
+              "body": "Unfortunately that wouldn't be correct. The Quarter Stream ID is present in the \"QUIC DATAGRAM frame\" encoding of HTTP Datagrams, but not in the Capsule encoding. Both encodings contain the HTTP Datagram Payload field.",
+              "createdAt": "2022-01-25T00:49:47Z",
+              "updatedAt": "2022-01-25T00:57:14Z"
+            },
+            {
+              "originalPosition": 91,
+              "body": "I don't disagree, but since we're most likely to remove this appendix entirely before publication, I'd rather not spend too much time on it. I've added Example- in more places to make this clearer",
+              "createdAt": "2022-01-25T00:52:05Z",
+              "updatedAt": "2022-01-25T00:57:14Z"
+            },
+            {
+              "originalPosition": 122,
+              "body": "Agreed, done.",
+              "createdAt": "2022-01-25T00:52:18Z",
+              "updatedAt": "2022-01-25T00:57:14Z"
+            },
+            {
+              "originalPosition": 119,
+              "body": "Agreed, done.",
+              "createdAt": "2022-01-25T00:53:57Z",
+              "updatedAt": "2022-01-25T00:57:14Z"
+            },
+            {
+              "originalPosition": 174,
+              "body": "I've removed this subsection. We'll decide as a WG whether we want to tackle extension composition in this draft or not",
+              "createdAt": "2022-01-25T00:56:38Z",
+              "updatedAt": "2022-01-25T00:57:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zXC14",
+          "commit": {
+            "abbreviatedOid": "dff420c"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-25T01:03:31Z",
+          "updatedAt": "2022-01-25T01:03:32Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "That being the case, please be consistent and use \"initiate\" rather than \"allocate\" later.  I was just trying to make the terms you use in the definition consistent with the usage later.  (In the direction I prefer, but you do get editor's privilege there.)",
+              "createdAt": "2022-01-25T01:03:31Z",
+              "updatedAt": "2022-01-25T01:03:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOETZKbc4zXDD2",
+          "commit": {
+            "abbreviatedOid": "dff420c"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-25T01:05:07Z",
+          "updatedAt": "2022-01-25T01:05:08Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "Right.  I did say that maybe you can use words, which would be fine.  The problem here is that I don't quite know how this is expected to fit into the bigger picture without a drawing on a lot more context.  I have that context, but I fear that others will not.",
+              "createdAt": "2022-01-25T01:05:07Z",
+              "updatedAt": "2022-01-25T01:05:08Z"
+            }
+          ]
         }
       ]
     }

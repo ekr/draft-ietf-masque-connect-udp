@@ -86,7 +86,6 @@ Table of Contents
    Appendix A.  Example Extensions
      A.1.  Registering Contexts with Headers
      A.2.  Registering Contexts with Capsules
-     A.3.  Composing Extensions
    Acknowledgments
    Author's Address
 
@@ -367,8 +366,9 @@ Table of Contents
    not define how registration occurs, though some examples of how it
    might occur are provided in Appendix A.  Depending on the method
    being used, it is possible for datagrams to be received with Context
-   IDs which have not yet been registered, for instance due to a race
-   condition in the arrival of the datagram and the registration.
+   IDs which have not yet been registered, for instance due to
+   reordering of the datagram and the registration packets during
+   transmission.
 
 5.  HTTP Datagram Payload Format
 
@@ -680,13 +680,8 @@ A.2.  Registering Contexts with Capsules
 
                 Figure 9: Example: Registration via capsule
 
-A.3.  Composing Extensions
-
-   A future extension could define how to compose extensions.  For
-   example, it could define a new HTTP header and/or capsule that maps a
-   context ID to a list of extensions.  That allows the sender to pick
-   low context IDs for the combinations that it knows it will be sending
-   often.
+   This example extension would most likely also define a new HTTP
+   header to indicate support.
 
 Acknowledgments
 

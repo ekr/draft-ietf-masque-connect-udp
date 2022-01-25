@@ -1520,7 +1520,12 @@ the context ID namespace is tied to a given HTTP request: it is possible for a
 context ID with the same numeric value to be simultaneously assigned different
 semantics in distinct requests, potentially with different semantics.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">Registration is the action by which an endpoint informs its peer of the
-semantics and format of a given context ID.<a href="#section-4-3" class="pilcrow">¶</a></p>
+semantics and format of a given context ID.
+This document does not define how registration occurs, though some examples of
+how it might occur are provided in <a href="#example-extensions" class="xref">Appendix A</a>.
+Depending on the method being used, it is possible for datagrams to be received with
+Context IDs which have not yet been registered, for instance due to a race
+condition in the arrival of the datagram and the registration.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="format">
@@ -1529,10 +1534,10 @@ semantics and format of a given context ID.<a href="#section-4-3" class="pilcrow
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-http-datagram-payload-forma" class="section-name selfRef">HTTP Datagram Payload Format</a>
       </h2>
 <p id="section-5-1">When associated with UDP proxying request streams, the HTTP Datagram Payload
-field of HTTP Datagrams (see <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>) has the format in <a href="#dgram-format" class="xref">Figure 6</a>.
+field of HTTP Datagrams (see <span>[<a href="#HTTP-DGRAM" class="xref">HTTP-DGRAM</a>]</span>) has the format defined in <a href="#dgram-format" class="xref">Figure 6</a>.
 Note that when HTTP Datagrams are encoded using QUIC DATAGRAM frames, the
-Context ID field below directly follows the Quarter Stream ID field which is at
-the start of the QUIC DATAGRAM frame payload.<a href="#section-5-1" class="pilcrow">¶</a></p>
+Context ID field defined below directly follows the Quarter Stream ID field which is at
+the start of the QUIC DATAGRAM frame payload:<a href="#section-5-1" class="pilcrow">¶</a></p>
 <span id="name-udp-proxying-http-datagram-"></span><div id="dgram-format">
 <figure id="figure-6">
         <div class="alignLeft art-text artwork" id="section-5-2.1">
@@ -1827,7 +1832,7 @@ UDP with Timestamp HTTP Datagrams {
 </div>
 <p id="appendix-A.1-4">The extension would also define a new HTTP header (Example-UDP-Timestamps) that
 includes a context ID value. Servers that understand this new HTTP header would
-be able to consequently handle and parse datagrams on the context ID, while all
+be able to consequently handle and parse datagrams with the context ID, while all
 other servers would silently drop the datagrams. Clients also indicate their
 support for receiving on this Context ID by registering it.<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
 <span id="name-example-registration-via-he"></span><div id="ex-hdr">
